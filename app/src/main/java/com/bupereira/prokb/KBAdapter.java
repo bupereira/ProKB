@@ -1,6 +1,7 @@
 package com.bupereira.prokb;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -72,15 +73,20 @@ public class KBAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        //mContext.setConte
-        if (convertView == null)
-            convertView = /*mContext*/ convertView.inflate(mContext, (int) getItemId(position), parent);;
+        // Get the current KBEntry
+        final KBEntry mKBEntry = mItems.get(position);
 
+
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            convertView = inflater.inflate(R.layout.kb_item, null);
+        }
         // TODO - Inflate the View for this ToDoItem
         // from todo_item.xml.
-
 
 
         // Return the View you just created
         return null;
     }
+}

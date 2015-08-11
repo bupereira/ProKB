@@ -14,9 +14,8 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     ListView mListView;
-    List<KBEntry> mKBList = new ArrayList<KBEntry>;
-
-
+    List<KBEntry> mKBList = new ArrayList<KBEntry>();
+    KBAdapter mKBAdapter;
 
 
     @Override
@@ -24,9 +23,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        KBAdapter mKBAdapter = new KBAdapter(getApplicationContext());
         mListView = (ListView) findViewById(R.id.listView);
-        mListView.setAdapter(mKBList);
-
+        mListView.setAdapter(mKBAdapter);
 
     }
 

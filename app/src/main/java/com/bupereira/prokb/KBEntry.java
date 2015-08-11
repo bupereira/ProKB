@@ -59,4 +59,7 @@ public class KBEntry {
     public void setmURL(String mURL) {
         this.mURL = mURL;
     }
+
+
+
 }
