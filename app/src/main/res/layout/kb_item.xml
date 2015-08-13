@@ -10,7 +10,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:lines="2" />
+        android:lines="2"
+        android:textColor="#ff000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,7 +20,8 @@
         android:text="Medium Text"
         android:id="@+id/KBData"
         android:layout_below="@+id/KBTitle"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#ff000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,5 +31,6 @@
         android:id="@+id/KBDescription"
         android:layout_below="@+id/KBData"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#ff000000" />
 </RelativeLayout>

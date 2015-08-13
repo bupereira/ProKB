@@ -15,9 +15,11 @@
         android:layout_alignParentStart="true" />
 
     <EditText
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/searchText"
         android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/imageView"
         android:layout_alignParentEnd="true"

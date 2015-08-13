@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,18 +76,40 @@ public class KBAdapter extends BaseAdapter {
 
         // Get the current KBEntry
         final KBEntry mKBEntry = mItems.get(position);
+        final ViewHolder holder;
 
 
         if (convertView == null) {
+            // Inflate the View for this KBEntry
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             convertView = inflater.inflate(R.layout.kb_item, null);
-        }
-        // TODO - Inflate the View for this ToDoItem
-        // from todo_item.xml.
 
+            // Fill in the specific KBEntry data
+            holder = new ViewHolder();
+            holder.KBTitle = (TextView) convertView.findViewById(R.id.KBTitle);
+            holder.KBData = (TextView) convertView.findViewById(R.id.KBData);
+            holder.KBDescription = (TextView) convertView.findViewById(R.id.KBDescription);
+            convertView.setTag(holder);
+        }
+        else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        holder.KBTitle.setText(mKBEntry.getmTitle());
+        holder.KBDescription.setText(mKBEntry.getmContent());
+        holder.KBData.setText(mKBEntry.getmData());
+
+
+        // TODO - Add a click Listener to open detail view next.
 
         // Return the View you just created
-        return null;
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView KBTitle;
+        TextView KBData;
+        TextView KBDescription;
     }
 }
