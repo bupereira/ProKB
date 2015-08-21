@@ -91,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
     public void performSearch() {
         // Look at http://stackoverflow.com/questions/18960306/android-httpget-incomplete-response-bufferedreader , look for " size limit of java string". Workaround
         // is split the string into an array.
-        String page = "";
+        String[] page = null;
         // Just in case this reference is empty
         if (vETSearchEditText == null) {
             vETSearchEditText = (EditText) findViewById(R.id.searchText);
@@ -105,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
         StrictMode.setThreadPolicy(policy);
 
         try {
-            page = httpClient.execute(httpGet, resHandler);
+            page = httpClient.execute(httpGet, resHandler).split("<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>");
 
         } catch(Exception e) {
             if (e instanceof IOException) {
@@ -118,11 +118,13 @@ public class MainActivity extends ActionBarActivity {
         } finally {
 
         }
-
-        Toast.makeText(this, page, Toast.LENGTH_SHORT).show();
-        Log.i("MuriloDEBUG", "http://knowledgebase.progress.com/pkb_Home?q=" + vETSearchEditText.getText() + "&l=en_US");
-        Log.i("HTTP", page);
-
+        if (page != null) {
+            //Toast.makeText(this, page, Toast.LENGTH_SHORT).show();
+            Log.i("MuriloDEBUG", "http://knowledgebase.progress.com/pkb_Home?q=" + vETSearchEditText.getText() + "&l=en_US");
+            for (int i = 0; i < page.length; i++ ) {
+                Log.i("HTTP", page[i]);
+            }
+        }
 
     }
 }
